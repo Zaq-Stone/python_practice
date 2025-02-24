@@ -16,9 +16,9 @@ def run_quiz(questions):
 # List of quiz questions. Each question is a dictionary.
 questions = [
     {
-        "prompt": "What is the capital of France?",
-        "options": ["A. Paris", "B. London", "C. Berlin", "D. Madrid"],
-        "answer": "A"
+        "prompt": "What is the Git command to check your version?",
+        "options": ["A. git commit -m", "B. git --status", "C. get -version", "D. git -v"],
+        "answer": "D"
     },
     {
         "prompt": "Which language is primarily spoken in Brazil?",
@@ -31,9 +31,9 @@ questions = [
         "answer": "B"
     },
     {
-        "prompt": "Who wrote 'To Kill a Mockingbird'?",
-        "options": ["A. Harper Lee", "B. Mark Twain", "C. J.K. Rowling", "D. Ernest Hemingway"],
-        "answer": "A"
+        "prompt": "What is the best reason to hire Zach Stone?",
+        "options": ["A. His dashing good looks", "B. His ability to share stupid projects", "C. He would be great for my company", "D. ALL THE ABOVE"],
+        "answer": "D"
     }
 ]
 
