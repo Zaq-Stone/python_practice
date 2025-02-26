@@ -1,20 +1,20 @@
 #I want to add a method that will allow me to add Questions to my Dictionary
 def add_questions(questions):
-    answer = input("Would you like to add a Fash Card Question (Y / N)").upper()
+    answer = input("Would you like to add a Fash Card Question (Y / N): ").upper()
     if answer == 'Y':
         options = []
-        prompt = input("Please type out your question")
-        Number_of_choices = input("Please enter how many answers you would like to select from: ").int()
+        prompt = input("Please type out your question: ")
+        Number_of_choices = int(input("Please enter how many answers you would like to select from: "))
         
         # This loop should allow the user to add as many answers as declared in Number_of_Choices
-        for i in Number_of_choices:
-            options.append(input("What is the letter and answer (A. Answer1 )"))
+        for i in range(Number_of_choices):
+            options.append(input("What is the letter and answer (A. Answer1 ): "))
 
         # Loop through the options list to display for the user to see
         for i in options:
             print([i])
 
-        answer = input("What is the Correct answer from above?(A / B/ C...)").uppper()
+        answer = input("What is the Correct answer from above?(A / B/ C...): ").upper()
 
         #I need to construct the Dictionary input to place into the questions List
         newQuestion = {
@@ -25,9 +25,10 @@ def add_questions(questions):
 
         # Now I need to append the selections for the new answer into the Questions Dictionary
         questions.append(newQuestion)
+        run_quiz(questions)
 
     else:
-        run_quiz()
+        run_quiz(questions)
 
     
 
@@ -71,4 +72,4 @@ questions = [
 ]
 
 # Run the quiz
-run_quiz(questions)
+add_questions(questions)
