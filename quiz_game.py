@@ -1,7 +1,51 @@
+#Libraries 
+import pickle #This library should be used to save to a file and load from a file
+
+# List of quiz questions. Each question is a dictionary.
+"""
+questions = [
+#    {
+#        "prompt": "What is the Git command to check your version?",
+#        "options": ["A. git commit -m", "B. git --status", "C. get -version", "D. git -v"],
+#        "answer": "D"
+#    },
+#    {
+        "prompt": "Which language is primarily spoken in Brazil?",
+        "options": ["A. Spanish", "B. Portuguese", "C. English", "D. French"],
+        "answer": "B"
+    },
+    {
+        "prompt": "What is the smallest prime number?",
+        "options": ["A. 1", "B. 2", "C. 3", "D. 5"],
+        "answer": "B"
+    },
+    {
+        "prompt": "What is the best reason to hire Zach Stone?",
+        "options": ["A. His dashing good looks", "B. His ability to share stupid projects", "C. He would be great for my company", "D. ALL THE ABOVE"],
+        "answer": "D"
+    }
+]
+"""
+
+#Method to save any questions to the file 'python_quiz_fdb.txt'
+def saveQuestions(dictionary, myquizdb):
+    with open(myquizdb, "wb") as myfile:
+        pickle.dump(dictionary, myfile)
+        myfile.close()
+
+#Method to load any questions from file 'python_quiz_fdb.txt
+def loadQuestions(myquizdb):
+    with open(myquizdb, "rb") as myFile:
+        questions = pickle.load(myFile)
+        myFile.close()
+        return questions
+
+#load questions dictionary
+questions = loadQuestions("python_quiz_fdb.txt")
+
 #I want to add a method that will allow me to add Questions to my Dictionary
 def add_questions(questions):
-    
-    
+   
     # Adding a loop to let the user continously add questions if they want to
     while True:
 
@@ -9,6 +53,7 @@ def add_questions(questions):
 
         #If statement that contains the logic for user to add a question
         if answer == 'Y':
+
             options = []
             prompt = input("Please type out your question: ")
             Number_of_choices = int(input("Please enter how many answers you would like to select from: "))
@@ -35,6 +80,7 @@ def add_questions(questions):
 
         elif answer == 'N':
             print("\n\n")
+            saveQuestions(questions,"python_quiz_fdb.txt")
             break
     
     # Run the quiz After the Loop finishes for add_questions method
@@ -54,30 +100,6 @@ def run_quiz(questions):
         else:
             print("Wrong! The correct answer was", question["answer"], "\n")
     print(f"You got {score} out of {len(questions)} questions correct.")
-
-# List of quiz questions. Each question is a dictionary.
-questions = [
-    {
-        "prompt": "What is the Git command to check your version?",
-        "options": ["A. git commit -m", "B. git --status", "C. get -version", "D. git -v"],
-        "answer": "D"
-    },
-    {
-        "prompt": "Which language is primarily spoken in Brazil?",
-        "options": ["A. Spanish", "B. Portuguese", "C. English", "D. French"],
-        "answer": "B"
-    },
-    {
-        "prompt": "What is the smallest prime number?",
-        "options": ["A. 1", "B. 2", "C. 3", "D. 5"],
-        "answer": "B"
-    },
-    {
-        "prompt": "What is the best reason to hire Zach Stone?",
-        "options": ["A. His dashing good looks", "B. His ability to share stupid projects", "C. He would be great for my company", "D. ALL THE ABOVE"],
-        "answer": "D"
-    }
-]
 
 #Invoke the add_questions method to start the inital run
 add_questions(questions)
